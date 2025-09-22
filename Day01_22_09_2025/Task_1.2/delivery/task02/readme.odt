@@ -1,0 +1,6 @@
+Commande sous linux :
+
+- mkdir delivery
+- mkdir task02
+- echo "Z" > z
+- cat -e z

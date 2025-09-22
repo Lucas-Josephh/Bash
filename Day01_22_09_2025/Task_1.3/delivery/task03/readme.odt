@@ -1,0 +1,13 @@
+Commande sous linux :
+
+- mkdir delivery
+- mkdir task03
+
+Création d'éléments dans le fichier pour vérifier le bon fonctionnement des commandes
+- touch boolean
+- touch open.txt
+- mkdir zest
+- mkdir gap
+
+- ls cmp | sort
+- chmod 777 open.txt

@@ -1,0 +1,6 @@
+Commande sous linux :
+
+Creer un fichier : touch test01
+Creer un fichier avec du texte : echo "If you don't struggle, you don't improve." >> test02
+Ajouter la permission d'execution pour tous : chmod ugo+x test02
+Ajouter un fichier lien : ln -s /test02 test03 (Creer le fichier test03 et ajoute un lien vers test02)
