@@ -1,0 +1,41 @@
+Générer une clé RSA ssh et lier avec github et les organisations
+
+- cd ~/.ssh (Si le .ssh n'existe pas, creez le : mkdir .ssh)
+- ssh-keygen -t rsa -C "<EMAIL>" (renseigner l'email de votre github)
+- Enter file in which to save the key (C:\USER\NAME/.ssh/id_rsa): <nom de votre fichier RSA>
+- Enter passphrase (empty for no passphrase): <MDP> (laisser vide pour ne pas définir de MDP)
+
+Ajouter la clé SSH à ssh-agent
+
+- ssh-add ~/.ssh/<nom de votre fichier RSA>
+
+On va maintenant ajouter la clé sur github et ajouter une organisations
+- Rendez-vous sur github et cliquer sur votre profil en haut à droite
+- Cliquer sur "Oragnizations"
+- En dessous de votre profil dans la catégorie "Access" cliquer sur "SSH and GPG key"
+- Cliquer sur "New SSH key"
+- Donner un titre à votre clé RSA rester par défaut sur "Authentification Key"
+- Dans "Key" renseigner tout le contenu de votre fichier <nom de votre fichier RSA>
+- Cliquer sur "Add SSH Key"
+- Une fois la clé ajouté, sur votre clé cliquer sur "configure SSO"
+- Puis sélectionner l'organisation à laquelle vous voulez associer votre clé
+
+Tests
+
+- Pour vérifier que tout est bien configuré, après avoir fait toutes les étapes précédentes, revener dans votre fichier ~/.shh
+- Vérifier le contenu de known_hosts.old : "cat known_hosts.old" ou ouvrez le dans un editeur de texte
+- Votre fichier doit ressemble à ça :
+    <host> <le contenu de votre fichier RSA>
+    pour github cela donne :
+        - github.com ssh-rsa AAAAB3NzaC1[...]
+- Si le contenu de votre fichier known_hosts.old ne correspond pas et que vous avez correctement fait les étapes précédentes,
+copier tout le contenu de votre fichier RSA puis supprimer tout sauf le host de votre fichier known_hosts.old et coller le contenu
+à la suite pour donner le même résultat vu précédément.
+
+Pour un premier teste faites :
+- ssh -T git@github.com
+- Résultat : Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+
+Si le teste est passé, vous pouvez push/commit/clone les répertoires/fichiers de votre organisation
+Si vous ne pouvez pas, vérifier d'abord que vous avez accès aux fichiers de votre organisation avant de cherche un bug
+qui n'existe peut être pas sur la procédure SSH que vous avez faite
