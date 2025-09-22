@@ -1,0 +1,3 @@
+#!/bin/bash
+
+read -p "Appuyez sur n'importe quelle touche pour continuer" x
